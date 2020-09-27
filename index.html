@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SSK form</title>
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="hero-content">
+                <h1>Let's play cricket in the <strong>best team </strong>of Stockholm</h1>
+                <p>Join us for the next season</p>
+                <p class="hero-emp">We are team SSK</p>
+            </div>
+            <div id="Main-Content" class="main-content">
+                    <h2>Become a SSK player</h2>        
+                    <p>Register today</p>
+                    <p> SSK isn't just another cricket club but it is a family, We play, we roll and we party. 
+                        You can play multitude of games at various levels and also get involved in cultural activites.
+                        One way to experience everything is joining the best. 
+                        You can do just that by signing up for further updates!
+                    </p>
+                    <form id="Email-Collector" class="poster-form" action="#" method="POST">
+                        <input name="firstName" type="text" placeholder="firstname" required>
+                        <input name="emailAddress" type="email" placeholder="email" required>
+                        <button class="btn btn-primary" type="submit">subscribe</button>    
+                    </form>
+                    <p class="main-content-disclaimer">We'll never share your information without your permission</p>
+            </div>
+        <div>
+         
+        <script>
+            let emailCollectorForm = document.getElementById("Email-Collector")
+            emailCollectorForm.addEventListener("submit", event => {
+                event.preventDefault()
+                let ourFormData = new FormData(event.target)
+                let userFirstName = ourFormData.get("firstName")
+                let userEmailAddress = ourFormData.get("emailAddress")
+                let updatedHtmlContent = `
+                    <h2>Congratulations, ${userFirstName}!</h2>
+
+                    <p>You're on your way to becoming a SSK member</p>
+                    
+                    <p class="main-content-disclaimer">You will get weekly BBQ tips sent to: ${userEmailAddress}</p>
+                `
+                let ourMainContent = document.getElementById("Main-Content")
+                ourMainContent.innerHTML = updatedHtmlContent
+            })
+        </script>
+    </body>
+</html>
